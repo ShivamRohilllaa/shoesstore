@@ -20,7 +20,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for obj in i.children.all %}
-                                <a class="dropdown-item" href="#">{{obj.title}}</a>
+                                <a class="dropdown-item" href="{% url 'allcatpost' obj.slug %}">{{obj.title}}</a>
                                 {% endfor %}
                             </div>
                         </li>
