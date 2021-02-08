@@ -21,7 +21,7 @@
                             {% for i in carts %}
                                 <tr>
                                     <th scope="row">{{forloop.counter}}
-                                         <img src="{{i.item.image.url}}" style="width:100px;">
+                                         <img src="{{i.item.image.url}}" style="width:50px;">
                                     </th>
                                     <td>{{i.item.title|title}}<br>
                                         <small>Size : {{i.item.size}}, Color : {{i.item.color}}</small>
@@ -30,9 +30,9 @@
                                         <div class="num-block skin-7">
                                            <div class="num-in">
                                             <span class="cart-qty">QTY:</span> 
-                                             <a href="{% url 'decrease' i.item.slug %}">  <i class="fas fa-minus"></i> </a>
+                                          <a href="{% url 'decrease' i.item.slug %}">    <i class="fas fa-minus"></i>  </a>
                                                 <input type="text" class="in-num" value="{{i.quantity}}" readonly="">
-<a href="{% url 'increase' i.item.slug %}">                                                <i class="fas fa-plus"></i> </a>
+                                          <a href="{% url 'increase' i.item.slug %}">             <i class="fas fa-plus"></i>  </a>
                                             </div>
                                         </div>
                                     </td>

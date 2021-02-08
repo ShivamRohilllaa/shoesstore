@@ -10,6 +10,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        exclude=['hit', 'author']
+
+class sliderForm(forms.ModelForm):
+    class Meta:
+        model = slider
+        fields = '__all__'
 
 class EditPostForm(forms.ModelForm): 
     class Meta:
@@ -21,6 +27,7 @@ class CatForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = '__all__'
+        exclude = ['hit']
 
 class EditCatForm(forms.ModelForm):
     

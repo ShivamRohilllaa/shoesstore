@@ -125,7 +125,6 @@ class slider(models.Model):
     head1 = models.CharField(max_length=100, blank=True, verbose_name='h6')
     head2 = models.CharField(max_length=100, blank=True, verbose_name='h1')
     head3 = models.CharField(max_length=100, blank=True, verbose_name='h5')
-    head4 = models.CharField(max_length=100, blank=True, verbose_name='h5')
     image = models.ImageField(upload_to='media/slider')
     button = models.CharField(max_length=100, blank=True, verbose_name='Button Name')
     link = models.URLField(max_length=500, blank=True, verbose_name='Link')

@@ -1,0 +1,485 @@
+{% extends 'base.html' %}
+{% block title %}
+Admin Panel
+{% endblock title %}
+{% block body %}
+{% load static %}
+    <section class="backend-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link" id="triangle-left" id="v-pills-home-tab" data-toggle="pill"
+                            href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">SLIDER</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                            role="tab" aria-controls="v-pills-profile" aria-selected="false">CATEGORY</a>
+                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                            role="tab" aria-controls="v-pills-messages" aria-selected="false">CATEGORY + PRODUCTS</a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="backend-background">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="backend-slider">
+                                    <div class="row mb-2">
+                                        <div class="col-lg-2">
+                                            <span>
+                                                <h4>SLIDER</h4>
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <span>
+                                                <span>Inactive</span>
+                                                <label class="switch">
+                                                    <input type="checkbox" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span>Active</span>
+                                            </span>
+                                        </div>
+            
+                                        <div class="col-lg-3">
+                                            {% comment %} <button type="button" class="btn btn-dark" data-toggle="modal"
+                                                data-target="#exampleModal">ADD SLIDER</button> {% endcomment %}
+                                                                                            <a href="{% url 'add_slider' %}" class="btn btn-dark">ADD SLIDER</a>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">SEQ.</th>
+                                                <th scope="col">PIC</th>
+                                                <th scope="col">POSITION</th>
+                                                <th scope="col">CONTENT</th>
+                                                <th scope="col">STATUS</th>
+                                                <th scope="col">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in sld %}
+                                            <tr>
+                                                <th scope="row">{{forloop.counter}}</th>
+                                                <td><img src="{{i.image.url}}" alt=""></td>
+                                                <td>Right</td>
+                                                <td>
+                                                    <h6 class="back-mord">{{i.head1}}</h6>
+                                                    <h4 class="got-2">{{i.head2}}.</h4>
+                                                    <h6 class="modern-cvv">
+                                                        {{i.head3}}</h6>
+                                                </td>
+                                                <td>{{i.active}}</td>
+                                                <td> <a href="{% url 'edit_slider' i.id %}"> <span class="pencil"><i class="fas fa-pen"></i></span> </a>
+                                                    <span><i class="fas fa-laptop"></i></span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <div class="row mb-2">
+                                    <div class="col-lg-3">
+                                        <span>
+                                            <h4>CATEGORY</h4>
+                                        </span>
+        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <span>
+                                            <span>Inactive</span>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <span>Active</span>
+                                        </span>
+                                    </div>
+        
+                                    <div class="col-lg-3">
+                                        {% comment %} <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal-2">ADD CATEGORY</button> {% endcomment %}
+                                        <a href="{% url 'add_cat' %}" class="btn btn-dark">ADD CATEGORY </a>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SEQ.</th>
+                                            <th scope="col">PIC</th>
+                                            <th scope="col">CATEGORY</th>
+                                            <th scope="col">STATUS</th>
+                                            <th scope="col">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                           {% for i in cats %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td><img src="{{i.image.url}}" style="width:100px;" alt=""></td>
+                                            <td>
+                                                <h6 class="modern-cvv">
+                                                    {{i.title}}</h6>
+                                            </td>
+                                            {% comment %} {% if i.active == "True" %}
+                                            <td>Active</td>
+                                            {% elif i.active == "False" %} {% endcomment %}
+                                            <td>{{i.active}}</td>
+                                            {% comment %} {% endif %} {% endcomment %}
+
+                                            <td><a href="{% url 'edit_cat' i.id %}"><span class="pencil"><i class="fas fa-pen"></i></span></a>
+                                                <span><i class="fas fa-laptop"></i></span>
+                                            </td>
+
+                                        </tr>
+                                            {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                                aria-labelledby="v-pills-messages-tab"> <div class="row mb-2">
+                                    <div class="col-lg-4">
+                                        <span>
+                                            <h5>CATEGORY + PRODUCT</h5>
+                                        </span>
+        
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span>
+                                            <span>Inactive</span>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <span>Active</span>
+                                        </span>
+                                    </div>
+        
+                                    <div class="col-lg-4">
+                                        {% comment %} <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal-3"></button> {% endcomment %}
+                                         <a href="{% url 'add_post' %}" class="btn btn-dark">ADD CATEGORY + PRODUCT</a>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SEQ.</th>
+                                            <th scope="col">PIC</th>
+                                            <th scope="col">CATEGORY</th>
+                                            <th scope="col">POSITION</th>
+                                            <th scope="col">STATUS</th>
+                                            <th scope="col">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in prod %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td><img src="{{i.image.url}}" alt=""></td>
+                                            <td>
+                                                <h6 class="modern-cvv">
+                                                    {{i.category.title}}</h6>
+                                            </td>
+                                            <td>Left</td>
+                                            <td>{{i.active}}</td>
+                                            <td><a href="{% url 'edit_post' i.id %}"><span class="pencil"><i class="fas fa-pen"></i></span></a>
+                                                <span><i class="fas fa-laptop"></i></span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Optional JavaScript -->
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <form action='{% url 'add_slider' %}' method='POST'>
+            {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ADD SLIDER</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span>POSITION:</span>
+                            <br><br>
+                            <div class="upload-btn-wrapper">
+                                <span>IMAGE :</span>
+                                <button class="btn">Attach File..</button>
+                                <input type="file" name="image" />
+                            </div>
+                            <h4 class="mt-4">CONTENT :</h4>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio1">LEFT</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="option1">
+
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio2">CENTER</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="option2">
+
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio3">RIGHT</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                    value="option3">
+                            </div>
+                            <div class="color-section-3">
+                                <ul>
+                                    <span>Background Color:</span>
+                                    <li class="red"><a href="#"></a></li>
+                                    <span>Font Color:</span>
+                                    <li class="black-red"><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div ng-app="">
+                            <div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group" ng-class="{'not-empty': userName.length}">
+                                                <input type="text" class="form-control" name="head1" id="head1"
+                                                    ng-model="userName" />
+                                                <label for="user" class="animated-label">H6 :</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group" ng-class="{'not-empty': passWord.length}">
+                                                <input type="password" class="form-control" name="head2" id="head2"
+                                                    ng-model="passWord" />
+                                                <label for="pass" class="animated-label">H1 :</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <div class="container">
+                            <div ng-app="">
+                                <div>
+                                        <h4 class="mt-2">BUTTON :</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group" ng-class="{'not-empty': userName.length}">
+                                                    <input type="text" class="form-control" name="button" id="user"
+                                                        ng-model="userName" />
+                                                    <label for="user" class="animated-label">NAME :</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group" ng-class="{'not-empty': passWord.length}">
+                                                    <input type="password" class="form-control" name="link" id="pass"
+                                                        ng-model="passWord" />
+                                                    <label for="pass" class="animated-label">LINK :</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="color-section-3">
+                                <ul>
+                                    <span>Background :</span>
+                                    <li class="red alag"><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="color-section-3">
+                                <ul>
+                                    <span>Font Color:</span>
+                                    <li class="black-red alag-2"><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 mera-form mt-2">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-6 col-form-label">SEQUENCE :</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="inputPassword">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 mt-3">
+                            <span>STATUS :</span>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio1">Active</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="option1">
+
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio2">Deactive</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="option2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+
+  <!-- Modal-2 -->
+  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ADD CATEGORY</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12 mera-form mt-2">
+                    <form>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-6 col-form-label">SEQUENCE :</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="inputPassword">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-6 col-form-label">CHOOSE CATEGORY:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="inputPassword">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <span>STATUS :</span>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio1">Active</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1">
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio2">Deactive</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal-2 -->
+   <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ADD CATEGORY + PRODUCT</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12 mera-form mt-2">
+                    <form>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-6 col-form-label">SEQUENCE :</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="inputPassword">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-6 col-form-label">CHOOSE CATEGORY:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="inputPassword">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <span>POSITION :</span>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio1">Left</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1">
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio2">Right</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2">
+
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <span>STATUS :</span>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio1">Active</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1">
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="inlineRadio2">Deactive</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock body %}

@@ -206,8 +206,18 @@ def add_post(request):
         if posts.is_valid():
             posts.save()
         messages.success(request, "Posts Added Sucessfully !!")    
-        return redirect('allposts')
-    return render(request, "webadmin/addpost.html", {'post':posts})
+        return redirect('admin')
+    return render(request, "addpost.html", {'post':posts})
+
+def add_slider(request):
+    posts= sliderForm()
+    if request.method=='POST':
+        posts=sliderForm(request.POST, request.FILES)
+        if posts.is_valid():
+            posts.save()
+        messages.success(request, "Slider Added Sucessfully !!")    
+        return redirect('admin')
+    return render(request, "add_slider.html", {'post':posts})
 
 def add_cat(request):
     category= CatForm()
@@ -216,8 +226,8 @@ def add_cat(request):
         if category.is_valid():
             category.save()
         messages.success(request, "category Added Sucessfully !!")    
-        return redirect('allcat')
-    return render(request, "webadmin/addcat.html", {'category':category})
+        return redirect('admin')
+    return render(request, "addcat.html", {'category':category})
 
 #This is for show all Posts in Custom Admin Panel
 def allposts(request):
@@ -256,23 +266,23 @@ def allcat(request):
 
 def edit_post(request, id):
     if request.method == 'POST':
-        posts = Post.objects.get(id=id)
+        posts = Product.objects.get(id=id)
         editpostForm= EditPostForm(request.POST or None, request.FILES or None, instance=posts)
         if editpostForm.is_valid():
             editpostForm.save()
         messages.success(request, "Post Update Sucessfully !!")
-        return redirect('allposts')
+        return redirect('admin')
     else:
-        posts = Post.objects.get(id=id)
+        posts = Product.objects.get(id=id)
         editpostForm= EditPostForm(instance=posts)
 
-    return render(request, "webadmin/editposts.html", {'editpost':editpostForm})
+    return render(request, "editposts.html", {'editpost':editpostForm})
     
 def delete_post(request, id):
-    delete = Post.objects.get(pk=id)  #pk means primary key
+    delete = Product.objects.get(pk=id)  #pk means primary key
     delete.delete()
     messages.success(request, "Post Deleted Successfully.")
-    return redirect('allposts')
+    return redirect('admin')
 
 
 #For edit the categories
@@ -283,15 +293,32 @@ def edit_cat(request, id):
         if editcatForm.is_valid():
             editcatForm.save()
             messages.success(request, "Category Update Sucessfully !!")
-            return redirect('allcat')
+            return redirect('admin')
         else:
             messages.warning(request, "Category is not Updated !!")
-            return redirect('allcat')    
+            return redirect('admin')    
     else:
         cat = Category.objects.get(id=id)
         editcatForm= CatForm(instance=cat)
 
-    return render(request, "webadmin/editcat.html", {'editcat':editcatForm})
+    return render(request, "editcat.html", {'editcat':editcatForm})
+
+def edit_slider(request, id):
+    if request.method == 'POST':
+        cat = slider.objects.get(id=id)
+        editcatForm= sliderForm(request.POST or None, request.FILES or None, instance=cat)
+        if editcatForm.is_valid():
+            editcatForm.save()
+            messages.success(request, "Category Update Sucessfully !!")
+            return redirect('admin')
+        else:
+            messages.warning(request, "Category is not Updated !!")
+            return redirect('admin')    
+    else:
+        cat = slider.objects.get(id=id)
+        editcatForm= sliderForm(instance=cat)
+
+    return render(request, "editslider.html", {'editslider':editcatForm})
 
 #For delete the categories    
 def delete_cat(request, id):
@@ -353,3 +380,25 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('home')
+
+def admin(request):
+    cats = Category.objects.all()
+    prod = Product.objects.all()
+    sld = slider.objects.all()
+    context = {'cats':cats, 'prod':prod, 'sld':sld}
+    return render(request, 'admin.html', context)
+
+# def add_slider(request):
+#     if request.method == 'POST':
+#         head1 = request.POST['head1']    
+#         head2 = request.POST['head2']    
+#         head3 = request.POST['head3']
+#         image = request.POST['image']
+#         button = request.POST['button']    
+#         link = request.POST['link']    
+#         font_color = request.POST['font_color']    
+
+#         ins = slider(head1=head1, head2=head2, head3=head3, image=image, button=button, link=link, font_color=font_color)
+#         ins.save()
+        
+#     return render(request, 'add_slider.html')

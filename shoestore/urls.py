@@ -19,5 +19,12 @@ urlpatterns = [
     path('userlogin/', views.login, name='userlogin'),
     path('usersignup/', views.signup, name='usersignup'),
     path('userlogout/', views.logout, name='logout'),
+    path('webadmin/', views.admin, name='admin'),
+    path('webadmin/add_slider/', views.add_slider, name='add_slider'),
+    path('webadmin/add_post/', views.add_post, name='add_post'),
+    path('webadmin/add_cat/', views.add_cat, name='add_cat'),
+    path('webadmin/edit_post/<int:id>/', views.edit_post, name='edit_post'),
+    path('webadmin/edit_cat/<int:id>/', views.edit_cat, name='edit_cat'),
+    path('webadmin/edit_slider/<int:id>/', views.edit_slider, name='edit_slider'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)    
