@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% load static %}
+{% block body %}
+{% load static %}
+<!-- slider-section -->
+    <section class="slider-section">
+        <div class="container-fluid">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    {% for i in sld %}
+                <div class="carousel-inner">
+                    {% if forloop.counter == 2 %}
+                    <div class="carousel-item active">
+                    {% else %}
+                    <div class="carousel-item">
+                        <img class="d-block w-100" style="height:600px;" src="{{i.image.url}}" alt="{{i.image_alt_name}}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p class="modern">{{i.head1}}</p>
+                            <h2>{{i.head2}}</h2>
+                            <p class="footwear">{{i.head3}}</p>
+                            <a class="btn btn-primary" href="{{i.link}}">{{i.button}}</a>
+                        </div>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--ALL-CATEGORIS- -->
+    <section class="ALL-CATEGORIS">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 main-vvv">
+                    <div class="images-with-border-2">
+                        <p>EXPLORE</p>
+                        <h2>ALL <br>CATEGORIS</h2>
+                        <span>CLICK TO EXPLORE THEM</span>
+                    </div>
+                </div>
+                {% for i in cats %}    
+                <div class="col-lg-3">
+                    <div class="images-with-border text-center">
+                      <a href="{% url 'allcatpost' i.slug %}">  <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image">
+                        <span>{{i.title|title}}</span> </a>
+                    </div>
+                </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </section>
+
+    <section class="owl-carousel-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="owl-carousel owl-theme">
+                    {% for i in shoes %}   
+                        <div class="item">
+                    {% if forloop.counter == 1 %}
+                            <div class="item-box">
+                                <a href="{% url 'details' i.category.slug i.slug %}">
+                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                               </a>
+                                <div class="text-position">
+                                    <span class="foot-wear-2">
+                                        {{i.category.title}}<br>
+                                        <span class="product-name">{{i.title}}</span>
+                                    </span>
+                                    <span class="rupees">
+                                        <ul>
+                                            <span class="price-tag">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                    class="Price-main">Price</span>
+                                            </span>
+                                            <span class="fa-rupeee">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                            </span>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="Second-position">
+                                    <span>- {{i.discount}}%</span>
+                                </div>
+                  
+                            </div>
+                    {% else %}
+                            <div class="item-box">
+                                <a href="{% url 'details' i.category.slug i.slug %}">
+                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                               </a>
+                                <div class="text-position">
+                                    <span class="foot-wear-2">
+                                        {{i.category.title}}<br>
+                                        <span class="product-name">{{i.title}}</span>
+                                    </span>
+                                    <span class="rupees">
+                                        <ul>
+                                            <span class="price-tag">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                    class="Price-main">Price</span>
+                                            </span>
+                                            <span class="fa-rupeee">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                            </span>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="Second-position">
+                                    <span>- {{i.discount}}%</span>
+                                </div>
+                            </div>
+                    {% endif %}                    
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{% static 'images/footwears.jpeg' %}" class="img-fluid" alt="Responsive image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="owl-carousel-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="{% static 'images/footwears.jpeg' %}" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="owl-carousel owl-theme">
+                    {% for i in shoes %}   
+                        <div class="item">
+                    {% if forloop.counter == 1 %}
+                            <div class="item-box">
+                              <a href="{% url 'add' i.slug %}">
+                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                               </a>
+                                <div class="text-position">
+                                    <span class="foot-wear-2">
+                                        {{i.category.title}}<br>
+                                        <span class="product-name">{{i.title}}</span>
+                                    </span>
+                                    <span class="rupees">
+                                        <ul>
+                                            <span class="price-tag">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                    class="Price-main">Price</span>
+                                            </span>
+                                            <span class="fa-rupeee">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                            </span>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="Second-position">
+                                    <span>- {{i.discount}}%</span>
+                                </div>
+                  
+                            </div>
+                    {% else %}
+                            <div class="item-box">
+                                <a href="{% url 'details' i.category.slug i.slug %}">
+                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                               </a>
+                                <div class="text-position">
+                                    <span class="foot-wear-2">
+                                        {{i.category.title}}<br>
+                                        <span class="product-name">{{i.title}}</span>
+                                    </span>
+                                    <span class="rupees">
+                                        <ul>
+                                            <span class="price-tag">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                    class="Price-main">Price</span>
+                                            </span>
+                                            <span class="fa-rupeee">
+                                                <li><i class="fas fa-rupee-sign"></i></li>
+                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                            </span>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="Second-position">
+                                    <span>- {{i.discount}}%</span>
+                                </div>
+                            </div>
+                    {% endif %}                    
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

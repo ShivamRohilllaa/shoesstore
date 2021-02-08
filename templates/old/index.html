@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+{% load static %}
+{% block body %}
+{% load static %}
+    <div class="site-wrapper-reveal">
+        <div class="hero-box-area mt-md-0 mt-lg-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 pl-0 pl-lg-3 pr-0 pr-lg-3">
+                        <!-- Hero Slider Area Start -->
+                        <div class="hero-area hero-slider-one">
+                            <div class="single-hero-slider-one bg-img" data-bg="{% static 'images/hero/home-default-1.jpg' %}">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="hero-text-one">
+                                                <h6 class="text-color-primary mb-10">
+                                                    CHAIR <br> COLLECTION <br> 2020
+                                            </h6>
+                                                <h1 class="hero-title">
+                                                    Welcome To <br> Helendo Store
+                                            </h1>
+                                                <p class="mt-30"> Many desktop publishing packages and web page editors now use <br>
+                                            Lorem Ipsum as their default model text
+                                            </p>
+                                                <div class="button-box mt-30">
+                                                    <a href="shop-4-column.html" class="hero-btn-one btn">Shop now <i class="icon-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-hero-slider-one bg-img" data-bg="{% static 'images/hero/home-default-2.jpg' %}">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="hero-text-one">
+                                                <h6 class="text-color-primary mb-10">
+                                                    CHAIR <br> COLLECTION <br> 2020
+                                            </h6>
+                                                <h1 class="hero-title">
+                                                    Welcome To <br> Helendo Store
+                                            </h1>
+                                                <p class="mt-30"> Many desktop publishing packages and web page editors now use <br>
+                                            Lorem Ipsum as their default model text
+                                            </p>
+                                                <div class="button-box mt-30">
+                                                    <a href="shop-4-column.html" class="hero-btn-one btn">Shop now <i class="icon-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-hero-slider-one bg-img" data-bg="{% static 'images/hero/home-default-3.jpg' %}">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="hero-text-one">
+                                                <h6 class="text-color-primary mb-10">
+                                                    CHAIR <br> COLLECTION <br> 2020
+                                            </h6>
+                                                <h1 class="hero-title">
+                                                    Welcome To <br> Helendo Store
+                                            </h1>
+                                                <p class="mt-30"> Many desktop publishing packages and web page editors now use <br>
+                                            Lorem Ipsum as their default model text
+                                            </p>
+                                                <div class="button-box mt-30">
+                                                    <a href="shop-4-column.html" class="hero-btn-one btn">Shop now <i class="icon-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hero Slider Area End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-wrapper section-space--ptb_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center mb-20">
+                            <h2 class="section-title--one section-title--center">Best Selling</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-main-content">
+                    <div class="row product-slider-active">
+                        {% for i in shoes %}
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="{% url 'details' i.category.slug i.slug %}" class="product-thumbnail">
+                                        <img src="{{i.image.url}}" class="img-fluid" alt="Product Images">
+                                        <span class="ribbon out-of-stock ">
+                                        Out Of Stock
+                                    </span>
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="#"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href=""><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="#">{{i.title}}</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">Rs. {{i.price}}</span> - <del> Rs. {{i.old_price}}</del>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock body %}

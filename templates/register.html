@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Signup
+{% endblock title %}
+{% load static %}
+{% block style %}
+ul li{display:none;}
+.login-dark{color:#fff;}
+{% endblock style %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% if user.is_authenticated %}
+  <script>
+  location.href = '{% url 'home' %}';
+  </script>
+  {% endif %}
+    <section class="login-section mt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mx-auto">
+                    <div class="login-dark p-3 shadow-lg rounded">
+                        <div class="pt-3">
+                            <h2 class="text-white ">Register</h2>
+                        </div>
+                        <form class="mt-5" method='post' action='.'>
+                        {% csrf_token %}
+                            {{form|crispy}}
+                            {{customerForm|crispy}}
+                            <button class="btn text-center btn-primary" type="Submit">Register </button> <br>
+                            <a href="{% url 'userlogin' %}">Already Have an account??  </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}

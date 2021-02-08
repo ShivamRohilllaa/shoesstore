@@ -1,0 +1,495 @@
+{% extends 'base.html' %}
+{% block title %}
+Product Detail
+{% endblock title %}
+{% load static %}
+{% block body %}
+    <!-- breadcrumb-area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row breadcrumb_box  align-items-center">
+                        <div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-left">
+                            <h2 class="breadcrumb-title">{{prod.title|title}}</h2>
+                        </div>
+                        <div class="col-lg-6  col-md-6 col-sm-6">
+                            <!-- breadcrumb-list start -->
+                            <ul class="breadcrumb-list text-center text-sm-right">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                <li class="breadcrumb-item active">{{prod.category.title}}</li>
+                            </ul>
+                            <!-- breadcrumb-list end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area end -->
+    <div class="site-wrapper-reveal">
+        <div class="single-product-wrap section-space--pt_90 border-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
+                        <!-- Product Details Left -->
+                        <div class="product-details-left">
+                            <div class="product-details-images-2 slider-lg-image-2">
+                                <div class="easyzoom-style">
+                                    <div class="easyzoom easyzoom--overlay">
+                                        <a href="{{active_img1.url}}" class="poppu-img">
+                                            <img src="{{active_img1.url}}" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-details-thumbs-2 slider-thumbs-2">
+                                <div class="sm-image"><img src="{{active_img1.url}}" alt="product image thumb" style="width:100px; height:100px;"></div>
+                                <div class="sm-image"><img src="{{active_img2.url}}" alt="product image thumb" style="width:100px; height:100px;"></div>
+                                <div class="sm-image"><img src="{{active_img3.url}}" alt="product image thumb" style="width:100px; height:100px;"></div>
+                                <div class="sm-image"><img src="{{active_img4.url}}" alt="product image thumb" style="width:100px; height:100px;"></div>
+                                <div class="sm-image"><img src="{{active_img5.url}}" alt="product image thumb" style="width:100px; height:100px;"></div>
+                            </div>
+                        </div>
+                        <!--// Product Details Left -->
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                        <div class="product-details-content ">
+
+                            <h5 class="font-weight--reguler mb-10">{{prod.title}}</h5>
+
+                            <h3 class="price">Rs. {{prod.price}}</h3>
+
+                            <div class="quickview-peragraph mt-10">
+                                <p>{{prod.desc|safe}}</p>
+                            </div>
+                            <div class="product-size-wrapper mt-20">
+                                <div class="tab-content d-flex">
+                                    <label class="mr-2">Size</label>
+                                    {% for i in sz %}
+                                    <div class="tab-pane fade show active" id="{{i.size}}">
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                                <ul class="nav product-size-menu" role="tablist">
+                                    {% for i in sz %}
+                                    <li class="tab__item nav-item">
+                                        <a class="nav-link" href="#size={{i.size}}" role="tab">{{i.size}}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+
+                            <div class="product-color-wrapper mt-20">
+                                
+                                <div class="tab-content d-flex">
+                                    <label class="mr-2">Color </label>
+                                    {% for i in clr %}                                
+                                    <div class="tab-pane fade show active" id="{{i.color}}" style="padding-right:10px;">
+                                        {{i.color}}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <ul class="nav product-color-menu" role="tablist">
+                                    {% for i in clr %}
+                                    <li class="tab__item nav-item active">
+                                        <a class="nav-link active" href="{% url 'details' prod.category.slug prod.slug %}?color={{i.color}}" role="tab"></a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+
+
+                            <div class="quickview-action-wrap mt-30">
+                                <div class="quickview-cart-box">
+                                    <div class="quickview-quality">
+                                        <div class="cart-plus-minus">
+                                       <a href="{% url 'decrease' prod.slug %}"> <div class="dec qtybutton1">-</div> </a>
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
+                                        <a href="{% url 'increase' prod.slug %}"><div class="inc qtybutton2">+</div> </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="quickview-button">
+                                        <div class="quickview-cart button">
+                                            {% comment %} <a href="{% url 'add' prod.slug active_color.color %}" class="btn--lg btn--black font-weight--reguler text-white">Add to cart</a> {% endcomment %}
+                                            <a href="{% url 'add' prod.slug active_color.color %}" class="btn--lg btn--black font-weight--reguler text-white">Add to cart</a>
+                                        </div>
+                                        <div class="quickview-wishlist button">
+                                            <a title="Add to wishlist" href="#"><i class="icon-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_meta mt-30">
+                                <div class="posted_in item_meta">
+                                    <span class="label">Categories: </span><a href="#">{{prod.category.title}}</a>
+                                </div>
+                            </div>
+                            <div class="product_socials section-space--mt_60">
+                                <span class="label">Share this items :</span>
+                                <ul class="helendo-social-share socials-inline">
+                                    <li>
+                                        <a class="share-twitter helendo-twitter" href="#" target="_blank"><i class="social_twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="share-facebook helendo-facebook" href="#" target="_blank"><i class="social_facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="share-google-plus helendo-google-plus" href="#" target="_blank"><i class="social_googleplus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="share-pinterest helendo-pinterest" href="#" target="_blank"><i class="social_pinterest"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="share-linkedin helendo-linkedin" href="#" target="_blank"><i class="social_linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-details-tab section-space--pt_90">
+                            <ul role="tablist" class=" nav">
+                                <li class="active" role="presentation">
+                                    <a data-toggle="tab" role="tab" href="#description" class="active">Description</a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab" role="tab" href="#sheet">Additional information</a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab" role="tab" href="#reviews">Reviews</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="product_details_tab_content tab-content mt-30">
+                            <!-- Start Single Content -->
+                            <div class="product_tab_content tab-pane active" id="description" role="tabpanel">
+                                <div class="product_description_wrap">
+                                    <div class="product-details-wrap">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-7 order-md-1 order-2">
+                                                <div class="details mt-30">
+                                                    <h5 class="mb-10">Detail</h5>
+                                                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum omnis voluptas assumenda.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-1">
+                                                <div class="images">
+                                                    <img src="{% static 'assets/images/product/single-product-01.jpg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-details-wrap">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-7 order-md-1 order-2">
+                                                <div class="details mt-30">
+                                                    <div class="pro_feature">
+                                                        <h5 class="title_3 mb-10">Features</h5>
+                                                        <ul class="feature_list">
+                                                            <li><a href="#"><i class="arrow_triangle-right"></i>Fully padded back panel, web hauded handle</a></li>
+                                                            <li><a href="#"><i class="arrow_triangle-right"></i>Internal padded sleeve fits 15″ laptop</a></li>
+                                                            <li><a href="#"><i class="arrow_triangle-right"></i>Internal tricot lined tablet sleeve</a></li>
+                                                            <li><a href="#"><i class="arrow_triangle-right"></i>One large main compartment and zippered</a></li>
+                                                            <li><a href="#"><i class="arrow_triangle-right"></i>Premium cotton canvas fabric</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-1">
+                                                <div class="images">
+                                                    <img src="{% static 'assets/images/product/single-product-02.jpg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Content -->
+                            <!-- Start Single Content -->
+                            <div class="product_tab_content tab-pane" id="sheet" role="tabpanel">
+                                <div class="pro_feature">
+                                    <table class="shop_attributes">
+                                        <tbody>
+                                            <tr>
+                                                <th>Weight</th>
+                                                <td>1.2 kg</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Dimensions</th>
+                                                <td>12 × 2 × 1.5 cm</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End Single Content -->
+                            <!-- Start Single Content -->
+                            <div class="product_tab_content tab-pane" id="reviews" role="tabpanel">
+
+                                <!-- Start RAting Area -->
+                                <div class="rating_wrap mb-30">
+                                    <h4 class="rating-title-2">Be the first to review “Wooden chair”</h4>
+                                    <p>Your rating</p>
+                                    <div class="rating_list">
+                                        <div class="product-rating d-flex">
+                                            <i class="yellow icon_star"></i>
+                                            <i class="yellow icon_star"></i>
+                                            <i class="yellow icon_star"></i>
+                                            <i class="yellow icon_star"></i>
+                                            <i class="yellow icon_star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End RAting Area -->
+                                <div class="comments-area comments-reply-area">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form action="#" class="comment-form-area">
+                                                <p class="comment-form-comment">
+                                                    <label>Your review *</label>
+                                                    <textarea class="comment-notes" required="required"></textarea>
+                                                </p>
+                                                <div class="comment-input">
+                                                    <p class="comment-form-author">
+                                                        <label>Name <span class="required">*</span></label>
+                                                        <input type="text" required="required" name="Name">
+                                                    </p>
+                                                    <p class="comment-form-email">
+                                                        <label>Email <span class="required">*</span></label>
+                                                        <input type="text" required="required" name="email">
+                                                    </p>
+                                                </div>
+
+                                                <div class="comment-form-submit">
+                                                    <input type="submit" value="Submit" class="comment-submit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Content -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="related-products section-space--ptb_90">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center mb-30">
+                                <h4>Related products</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row product-slider-active">
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_1-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                        <span class="ribbon out-of-stock ">
+                                        Out Of Stock
+                                    </span>
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Teapot with black tea</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£40.00</span> - <span class="old-price"> £635.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_2-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Simple Chair</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£70.00</span> - <span class="old-price"> £95.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_3-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Smooth Disk</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£46.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_4-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                        <span class="ribbon onsale">
+                                    -14%
+                                    </span>
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Wooden Flowerpot</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£40.00</span> - <span class="old-price"> £635.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_5-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Living room & Bedroom lights</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£60.00</span> - <span class="old-price"> £69.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_6-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Gray lamp</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£80.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_7-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Decoration wood</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£50.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+
+                        <div class="col-lg-12">
+                            <!-- Single Product Item Start -->
+                            <div class="single-product-item text-center">
+                                <div class="products-images">
+                                    <a href="product-details.html" class="product-thumbnail">
+                                        <img src="{% static 'assets/images/product/1_8-300x300.jpg"' %} class="img-fluid" alt="Product Images">
+
+                                    </a>
+                                    <div class="product-actions">
+                                        <a href="#" data-toggle="modal" data-target="#prodect-modal"><i class="p-icon icon-plus"></i><span class="tool-tip">Quick View</span></a>
+                                        <a href="product-details.html"><i class="p-icon icon-bag2"></i> <span class="tool-tip">Add to cart</span></a>
+                                        <a href="wishlist.html"><i class="p-icon icon-heart"></i> <span class="tool-tip">Browse Wishlist</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h6 class="prodect-title"><a href="product-details.html">Teapot with black tea</a></h6>
+                                    <div class="prodect-price">
+                                        <span class="new-price">£20.00</span> - <span class="old-price"> £135.00</span>
+                                    </div>
+                                </div>
+                            </div><!-- Single Product Item End -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock body %}

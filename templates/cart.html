@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title %}
+{% block body %}
+{% load static %}
+    <section class="cart-section-w mt-3">
+        <div class="container">
+            <div class="row text-center">
+                 <div class="col-lg-6">
+
+                 </div>
+                <div class="col-lg-6 mx-auto">
+                    <div class="cart-back">
+                    <div class="cart-section">
+                        <h4>CART</h4>
+                        <span><i class="fas fa-shopping-bag"></i></span>
+                    </div>
+                    <div class="delete-section-2 mt-4">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            {% for i in carts %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}
+                                         <img src="{{i.item.image.url}}" style="width:100px;">
+                                    </th>
+                                    <td>{{i.item.title|title}}<br>
+                                        <small>Size : {{i.item.size}}, Color : {{i.item.color}}</small>
+                                    </td>
+                                    <td> 
+                                        <div class="num-block skin-7">
+                                           <div class="num-in">
+                                            <span class="cart-qty">QTY:</span> 
+                                             <a href="{% url 'decrease' i.item.slug %}">  <i class="fas fa-minus"></i> </a>
+                                                <input type="text" class="in-num" value="{{i.quantity}}" readonly="">
+<a href="{% url 'increase' i.item.slug %}">                                                <i class="fas fa-plus"></i> </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="{% url 'remove' i.item.slug %}"><i class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

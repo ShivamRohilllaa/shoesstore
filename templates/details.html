@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block title %}{{prod.title}}{% endblock title %}
+{% load static %}
+{% block body %}
+    <!--products-page-->
+    <section class="products-page">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="products-images">
+                            <img src="{{active_img1.url}}" class="img-fluid" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="products-images">
+                            <img src="{{active_img2.url}}" class="img-fluid" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="products-images">
+                            <img src="{{active_img3.url}}" class="img-fluid" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="products-images">
+                            <img src="{{active_img4.url}}" class="img-fluid" alt="Responsive image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="products-images">
+                            <img src="{{active_img5.url}}" class="img-fluid" alt="Responsive image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="products-small">
+                    <h4>PRODUCT NAME</h4>
+                    <small>SKU ID : 345678</small>
+                    <div class="star-section">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(23 Reviews)</span>
+                    </div>
+                </div>
+
+                <div class="mrp-price">
+                    <p><span class="mrp-2">M.R.P. :</span>
+                        <span class="second-mrp"><i class="fas fa-rupee-sign"></i> {{prod.old_price}}</span>
+                    </p>
+                    <p><span class="mrp-2">TRIDOT PRICE :</span>
+                        <span class="second-mrp-2"><i class="fas fa-rupee-sign"></i> {{prod.price}}</span>
+                    </p>
+                    <p><span class="mrp-2">YOU SAVE :</span>
+                        <span class="second-mrp-3">{{prod.discount}} %</span>
+                    </p>
+                </div>
+
+                <div class="short-price">
+                    <h5>SHORT DESC. :</h5>
+                    <ul>
+                        <li>{{prod.desc|safe}}</li>
+                    </ul>
+                </div>
+
+                <div class="recipt text-center">
+                    <div class="next-images">
+                        <img src="{% static 'images/medical.png' %}" alt="">
+                        <h6>Next Day Ship</h6>
+                    </div>
+                    <div class="next-images">
+                        <img src="{% static 'images/medical.png' %}" alt="">
+                        <h6>10 Days Returnable</h6>
+                    </div>
+                    <div class="next-images">
+                        <img src="{% static 'images/medical.png' %}" alt="">
+                        <h6>Money Back Guarantee</h6>
+                    </div>
+                </div>
+
+                <div class="color-section">
+                    <h6>Select Your Color :</h6>
+                    <ul>
+                        {% for i in clr %}
+                        <a href="{% url 'details' prod.category.slug prod.slug %}?color={{i.color}}"><li class="{{i.color}}"></li></a>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="size-section">
+                    <h6>Select Your Size :</h6>
+                    <h6 class="size-2">SIZE GUIDE</h6>
+                </div>
+                <div class="size-detais">
+                    <ul>
+                    {% for i in sz %}
+                        <li><a href="#">{{i.size}}</a></li>
+                    {% endfor %}    
+                    </ul>
+                </div>
+
+                <div class="add-to-cart">
+                    <!-- skin 7 -->
+                    <div class="num-block skin-7">
+                        <div class="num-in">
+                           <a href="{% url 'decrease' prod.slug %}"> <span class="minus dis">-</span> </a>
+                            <a href="{% url 'increase' prod.slug %}"> <input type="text" class="in-num" value="1" readonly="">
+                            <span class="plus">+</span> </a>
+                        </div>
+                    </div>
+                    <div class="button-section">
+                        <a href="{% url 'add' prod.slug %}" class="btn btn-outline-dark">ADD TO CART</a>
+                    </div>
+                     <div class="card-button-2">
+                      <ul>
+                          <li><a href="#"><i class="far fa-heart"></i></a></li>
+                          <li><a href="#"><i class="fas fa-share"></i></a></li>
+                      </ul>
+                     </div>
+                    <!-- / skin 7 -->
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}  

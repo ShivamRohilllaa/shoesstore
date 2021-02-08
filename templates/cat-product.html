@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{cats.title}}
+{% endblock title %}
+{% block body %}
+    <section class="sub-category-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="sub-head">
+                        <div class="sub-head-images">
+                            <img src="{% static 'images/trans.png' %}" class="img-fluid" alt="Responsive image">
+                        </div>
+                        <div class="sub-head-text">
+                            <p class="pro">PRODUCTS:<span class="item-109">{{prod}}</span></p>
+                            <h4 class="foot-w">{{cats.title}}</h4>
+                            {% comment %} <h6 class="sub-cste2">Products:{{prod}}</h6> {% endcomment %}
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="sub-caresoul">
+                        <div class="carousel-wrap">
+                            <div class="owl-carousel">
+                                {% for i in catgs %}
+                                <div class="item">
+                                    <a href="{% url 'allcatpost' i.slug %}">
+                                        <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image" style="width:100px;">
+                                        <h6>{{i.title|title}}</h6>
+                                        <div class="Sub-Cat">
+                                            {% comment %} <span></span> {% endcomment %}
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="SUB-CATEGORIES-large">
+      <div class="container-fluid">
+          <div class="main-home">
+          <h4>SUB-CATEGORIES</h4>
+             <div class="ul-sub">
+               <ul>
+                   <li><a href="#">HOME</a></li>
+                   <li><a href="#">FOOTWARE</a></li>
+                   <li><a href="#">SUB-CATEGORIES</a></li>
+               </ul>
+             </div>
+            </div>
+        <div class="row">
+              {% if not cat_post %}
+              <div class="col-lg-12 text-center">
+              <h1> No Product is Available !! </h1>
+              </div>
+              {% endif %}
+            {% for i in cat_post %}                              
+              <div class="col-lg-3">
+                <div class="large-sub">
+                 <a href="{% url 'details' i.category.slug i.slug %}">   <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> </a>
+                   <div class="text-position-sub">
+                      <span class="foot-wear-2">
+                          {{i.category.title}}<br>
+                         <span class="product-name">{{i.title}}</span> 
+                      </span>
+  
+                      <span class="rupees">
+                          <ul>
+                              <span class="price-tag">
+                                  <li><i class="fas fa-rupee-sign"></i></li>
+                                 <span class="line-overtr">{{i.old_price}}</span> <br> <span class="Price-main">Price</span>
+                              </span>
+                              <span class="fa-rupeee">
+                                  <li><i class="fas fa-rupee-sign"></i></li>
+                                  {{i.price}} <br> <span class="Price-main">Price</span>
+                              </span>
+                          </ul></span>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}  
+        </div>
+      </div>
+   </section>
+{% endblock body %}
