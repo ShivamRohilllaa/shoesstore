@@ -1,0 +1,470 @@
+
+/*media-query-section*/
+
+@media only screen and (min-width:1320px){
+
+}
+@media only screen and (max-width:1320px){
+
+}
+@media only screen and (max-width:1200px){
+    
+}
+
+@media only screen and (max-width: 991px){
+   
+    .carousel-caption {
+        position: absolute;
+        right: 47% !important; 
+        bottom: -8px !important;
+        left: -17px;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .slider-section .carousel-caption h2 {
+        font-size: 50px !important;
+        font-weight: 600;
+        color: #000000;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .shop-now-position {
+        position: absolute;
+        top: 60%;
+        text-align: center;
+        left: 290px;
+    }
+    
+    
+    .text-position {
+        position: absolute;
+        bottom: -5%;
+        display: inline-flex;
+        height: 90px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px;
+        width: 90%;
+        text-decoration: none;
+    }
+    .footer-section {
+        margin-top: 20px;
+        background-color: #000000;
+        padding-top: 29px;
+        padding-bottom: 25px;
+        text-align: center;
+    }
+    .mrp-price {
+        padding: 20px;
+        text-align: center;
+    }
+    .short-price {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        text-align: center;
+    }
+    .recipt {
+        padding-left: 20px;
+        width: 100%;
+        padding-top: 30px;
+        display: inline-flex;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        justify-content: space-between;
+    }
+    .products-small {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        padding-top: 30px;
+    }
+    .adderes {
+        border-right: 0px solid !important;
+    }
+}
+
+@media only screen and (max-width:767px){
+    .images-with-border-2 {
+        padding: 20px;
+        padding-top: 101px;
+        padding-left: 75px;
+    }
+    .text-position {
+        position: absolute;
+        bottom: -3%;
+        display: inline-flex;
+        height: 70px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 13px;
+        width: 103%;
+        text-decoration: none;
+        margin-left: -15px;
+    }
+
+    .shop-now-position {
+        position: absolute;
+        top: 60%;
+        text-align: center;
+        left: 145px;
+    }
+ 
+    .social-section {
+        padding-top: 10px;
+    }
+    .debit-card {
+        padding-top: 8px;
+    }
+    .mrp-price {
+        padding: 20px;
+        text-align: center;
+    }
+    .recipt {
+        padding-left: 20px;
+        width: 100%;
+        padding-top: 30px;
+        display: inline-flex;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        justify-content: space-between;
+    }
+    .short-price {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        text-align: center;
+    }
+    .products-small {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        padding-top: 20px;
+    }
+    .foot-wear-2 {
+        font-size: 10px;
+        color: #000000;
+        font-weight: 700;
+    }
+    .product-name {
+        color: #2b2a2a;
+        font-weight: 500;
+        font-size: 11px;
+    }
+    .Price-main {
+        font-size: 11px;
+        padding-left: 10px;
+    }
+    .fa-rupeee {
+        color: #000000;
+        font-size: 10px;
+    }
+    .line-overtr {
+        position: relative;
+        font-size: 11px;
+    }
+}
+@media only screen and (max-width:768px){
+
+    .Price-main {
+        font-size: 11px;
+        padding-left: 10px;
+    }
+    .line-overtr {
+        position: relative;
+        font-size: 11px;
+    }
+
+    .fa-rupeee {
+        color: #000000;
+        font-size: 10px;
+    }
+
+    .text-position {
+        position: absolute;
+        bottom: -5%;
+        display: inline-flex;
+        height: 73px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0px;
+        width: 92%;
+        text-decoration: none;
+    }
+
+    .slider-section .carousel-caption h2 {
+        font-size: 34px !important;
+        font-weight: 600;
+        color: #000000;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .mrp-price {
+        padding: 20px;
+        text-align: center;
+    }
+    .short-price {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        text-align: center;
+    }
+    .recipt {
+        padding-left: 20px;
+        width: 100%;
+        padding-top: 30px;
+        display: inline-flex;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d0d0d0;
+        justify-content: space-between;
+    }
+    .foot-wear-2 {
+        font-size: 10px;
+        color: #000000;
+        font-weight: 700;
+    }
+    .product-name {
+        color: #2b2a2a;
+        font-weight: 500;
+        font-size: 11px;
+    }
+}
+@media only screen and (max-width:580px){
+    .text-position {
+        position: absolute;
+        bottom: 0%;
+        display: inline-flex;
+        height: 75px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 20px;
+        width: 60%;
+        text-decoration: none;
+        margin-left: 100px;
+    }
+    .mob {
+        padding-left: 10px;
+    }
+    .size-detais {
+        padding-top: 20px;
+        padding-left: 10px;
+    }
+  
+    .add-to-cart {
+        padding-top: 30px;
+        display:inline-block;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .images-with-border-2 h2 {
+        font-size: 26px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .images-with-border-2 {
+        padding: 20px;
+        padding-top: 60px;
+        padding-left: 45px;
+    }
+
+
+}
+@media only screen and (max-width:480px){
+  
+    .images-with-border-2 {
+        padding: 20px;
+        padding-top: 45px;
+        height: 150px;
+    }
+   
+    .images-with-border-2 h2 {
+        font-size: 29px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-position {
+        position: absolute;
+        bottom: 0%;
+        display: inline-flex;
+        height: 75px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 20px;
+        width: 67%;
+        text-decoration: none;
+        margin-left: 44px;
+    }
+    .shop-now-position {
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        right: 0px !important;
+        left: 0px;
+    }
+    .cart-section h4:after {
+        border-top: 3px solid #000000;
+        content: "";
+        margin: 0 auto;
+        position: absolute;
+        top: 90%;
+        left: -25px;
+        bottom: 0;
+        width: 140px;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 480px){
+.images-with-border-2 h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+}
+
+@media only screen and (max-width:400px){
+    .images-with-border-2 {
+        padding: 20px;
+        padding-top: 18px;
+        padding-left: 30px;
+    }
+    .images-with-border-2 h2 {
+        font-size: 14px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text-position {
+        position: absolute;
+        bottom: 0%;
+        display: inline-flex;
+        height: 75px;
+        border-radius: 2px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 20px;
+        width: 77%;
+        text-decoration: none;
+        margin-left: 18px;
+    }
+  
+    .star-section {
+        float: right;
+        padding-top: 5px;
+    }
+    .skin-7 .num-in {
+        float: left;
+        width: 195px;
+        margin-bottom: 10px;
+    }
+    .button-section {
+    margin-bottom: 10px; 
+    }
+    .shop-now-position h3 {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 25px;
+        letter-spacing: 5px;
+    }
+    .shop-now-position {
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        right: 0px !important;
+        left: 0px;
+    }
+    .cart-section h4:after {
+        border-top: 3px solid #000000;
+        content: "";
+        margin: 0 auto;
+        position: absolute;
+        top: 90%;
+        left: -25px;
+        bottom: 0;
+        width: 140px;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width:321px){
+    .images-with-border-2 {
+        padding: 13px;
+        padding-top: 9px;
+        padding-left: 30px;
+    }
+.all-cet {
+    font-size:10px
+
+}
+   .images-with-border-2 span {
+       font-size: 10px;
+   } 
+   .images-with-border span {
+       font-size: 10px;
+   }
+
+   .text-position {
+    position: absolute;
+    bottom: -3%;
+    display: inline-flex;
+    height: 75px;
+    border-radius: 2px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 20px;
+    width: 94%;
+    text-decoration: none;
+    margin-left: -9px;
+}
+.shop-now-position {
+    position: absolute;
+    top: 40%;
+    text-align: center;
+    right: 0px !important;
+    left: 0px;
+}
+
+.shop-now-position h3 {
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 5px;
+}
+
+.copy-right p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer-section {
+    margin-top: 20px;
+    background-color: #000000;
+    padding-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    font-size: 13px;
+}
+
+.cart-section h4:after {
+    border-top: 3px solid #000000;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 90%;
+    left: -25px;
+    bottom: 0;
+    width: 140px;
+    z-index: -1;
+}
+
+}

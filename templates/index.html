@@ -49,72 +49,135 @@
             </div>
         </div>
     </section>
-
     <section class="owl-carousel-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 d-block d-md-none">
+                    <div class="foot-posi">
+                        <img src="{% static 'images/footwears.jpeg' %} " class="img-fluid" alt="Responsive image">
+                        <div class="shop-now-position text-center">
+                            <h6>SHOP NOW</h6>
+                            <h3>FOOTWARE</h3>
+                            <button type="button" class="btn btn-primary">EXPLORE ALL</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="owl-carousel owl-theme">
+                        {% for i in shoes %}   
+                        <div class="item">
+                                <div class="item-box">
+                                    <a href="{% url 'details' i.category.slug i.slug %}">
+                                <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                                </a>
+                                    <div class="text-position">
+                                        <span class="foot-wear-2">
+                                            {{i.category.title}}<br>
+                                            <span class="product-name">{{i.title}}</span>
+                                        </span>
+                                        <span class="Username or Customer">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                        class="Price-main">Price</span>
+                                                </span>
+                                                <span class="fa-rupeee">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                                </span>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="Second-position">
+                                        <span>- {{i.discount}}%</span>
+                                    </div>
+                    
+                                </div>                
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="owl-carousel owl-theme">
+                        {% for i in shoe2 %}   
+                        <div class="item">
+                                <div class="item-box">
+                                    <a href="{% url 'details' i.category.slug i.slug %}">
+                                <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                                </a>
+                                    <div class="text-position">
+                                        <span class="foot-wear-2">
+                                            {{i.category.title}}<br>
+                                            <span class="product-name">{{i.title}}</span>
+                                        </span>
+                                        <span class="Username or Customer">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                        class="Price-main">Price</span>
+                                                </span>
+                                                <span class="fa-rupeee">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                                </span>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="Second-position">
+                                        <span>- {{i.discount}}%</span>
+                                    </div>
+                                </div>             
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-md-block">
+                    <div class="foot-posi">
+                        <img src="{% static 'images/footwears.jpeg' %} " class="img-fluid" alt="Responsive image">
+                        <div class="shop-now-position text-center">
+                            <h6>SHOP NOW</h6>
+                            <h3>FOOTWARE</h3>
+                            <button type="button" class="btn btn-primary">EXPLORE ALL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% comment %} <section class="owl-carousel-section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="owl-carousel owl-theme">
-                    {% for i in shoes %}   
+                        {% for i in shoes %}   
                         <div class="item">
-                    {% if forloop.counter == 1 %}
-                            <div class="item-box">
-                                <a href="{% url 'details' i.category.slug i.slug %}">
-                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
-                               </a>
-                                <div class="text-position">
-                                    <span class="foot-wear-2">
-                                        {{i.category.title}}<br>
-                                        <span class="product-name">{{i.title}}</span>
-                                    </span>
-                                    <span class="Username or Customer # class="price-tag">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
-                                                    class="Price-main">Price</span>
-                                            </span>
-                                            <span class="fa-rupeee">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
-                                            </span>
-                                        </ul>
-                                    </span>
+                            {% if forloop.counter == 1 %}
+                                <div class="item-box">
+                                    <a href="{% url 'details' i.category.slug i.slug %}">
+                                <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                                </a>
+                                    <div class="text-position">
+                                        <span class="foot-wear-2">
+                                            {{i.category.title}}<br>
+                                            <span class="product-name">{{i.title}}</span>
+                                        </span>
+                                        <span class="Username or Customer">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                        class="Price-main">Price</span>
+                                                </span>
+                                                <span class="fa-rupeee">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                                </span>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="Second-position">
+                                        <span>- {{i.discount}}%</span>
+                                    </div>
+                    
                                 </div>
-                                <div class="Second-position">
-                                    <span>- {{i.discount}}%</span>
-                                </div>
-                  
-                            </div>
-                    {% else %}
-                            <div class="item-box">
-                                <a href="{% url 'details' i.category.slug i.slug %}">
-                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
-                               </a>
-                                <div class="text-position">
-                                    <span class="foot-wear-2">
-                                        {{i.category.title}}<br>
-                                        <span class="product-name">{{i.title}}</span>
-                                    </span>
-                                    <span class="rupees">
-                                        <ul>
-                                            <span class="price-tag">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
-                                                    class="Price-main">Price</span>
-                                            </span>
-                                            <span class="fa-rupeee">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
-                                            </span>
-                                        </ul>
-                                    </span>
-                                </div>
-                                <div class="Second-position">
-                                    <span>- {{i.discount}}%</span>
-                                </div>
-                            </div>
-                    {% endif %}                    
+                                {% else %}
+                            {% endif %}                    
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -122,7 +185,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
     <section class="owl-carousel-section">
         <div class="container-fluid">
             <div class="row">
@@ -131,68 +194,68 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="owl-carousel owl-theme">
-                    {% for i in shoes %}   
+                        {% for i in shoes %}   
                         <div class="item">
-                    {% if forloop.counter == 1 %}
-                            <div class="item-box">
-                              <a href="{% url 'add' i.slug %}">
-                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
-                               </a>
-                                <div class="text-position">
-                                    <span class="foot-wear-2">
-                                        {{i.category.title}}<br>
-                                        <span class="product-name">{{i.title}}</span>
-                                    </span>
-                                    <span class="rupees">
-                                        <ul>
-                                            <span class="price-tag">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
-                                                    class="Price-main">Price</span>
-                                            </span>
-                                            <span class="fa-rupeee">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
-                                            </span>
-                                        </ul>
-                                    </span>
-                                </div>
-                                <div class="Second-position">
-                                    <span>- {{i.discount}}%</span>
-                                </div>
-                  
-                            </div>
-                    {% else %}
-                            <div class="item-box">
-                                <a href="{% url 'details' i.category.slug i.slug %}">
-                               <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
-                               </a>
-                                <div class="text-position">
-                                    <span class="foot-wear-2">
-                                        {{i.category.title}}<br>
-                                        <span class="product-name">{{i.title}}</span>
-                                    </span>
-                                    <span class="rupees">
-                                        <ul>
-                                            <span class="price-tag">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
-                                                    class="Price-main">Price</span>
-                                            </span>
-                                            <span class="fa-rupeee">
-                                                <li><i class="fas fa-rupee-sign"></i></li>
-                                                Rs. {{i.price}}<br> <span class="Price-main">Price</span>
-                                            </span>
-                                        </ul>
-                                    </span>
-                                </div>
-                                <div class="Second-position">
-                                    <span>- {{i.discount}}%</span>
-                                </div>
-                            </div>
-                    {% endif %}                    
+                                <div class="item-box">
+                                    <a href="{% url 'details' i.category.slug i.slug %}">
+                                <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                                </a>
+                                    <div class="text-position">
+                                        <span class="foot-wear-2">
+                                            {{i.category.title}}<br>
+                                            <span class="product-name">{{i.title}}</span>
+                                        </span>
+                                        <span class="Username or Customer">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                        class="Price-main">Price</span>
+                                                </span>
+                                                <span class="fa-rupeee">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                                </span>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="Second-position">
+                                        <span>- {{i.discount}}%</span>
+                                    </div>
+                    
+                                </div>          
                         </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="owl-carousel owl-theme">
+                        {% for i in shoes %}   
+                        <div class="item">
+                                <div class="item-box">
+                                    <a href="{% url 'details' i.category.slug i.slug %}">
+                                <img src="{{i.image.url}}" class="img-fluid" alt="Responsive image"> 
+                                </a>
+                                    <div class="text-position">
+                                        <span class="foot-wear-2">
+                                            {{i.category.title}}<br>
+                                            <span class="product-name">{{i.title}}</span>
+                                        </span>
+                                        <span class="Username or Customer">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
+                                                        class="Price-main">Price</span>
+                                                </span>
+                                                <span class="fa-rupeee">
+                                                    <li><i class="fas fa-rupee-sign"></i></li>
+                                                    Rs. {{i.price}}<br> <span class="Price-main">Price</span>
+                                                </span>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="Second-position">
+                                        <span>- {{i.discount}}%</span>
+                                    </div>
+                    
+                                </div>            
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

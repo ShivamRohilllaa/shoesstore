@@ -22,6 +22,9 @@
                                 {% for obj in i.children.all %}
                                 <a class="dropdown-item" href="{% url 'allcatpost' obj.slug %}">{{obj.title}}</a>
                                 {% endfor %}
+                                {% for j in obj.children.all %}
+                                <a class="dropdown-item" href="{% url 'allcatpost' obj.slug %}">{{j.title}}</a>
+                                {% endfor %}
                             </div>
                         </li>
                         {% endif %}

@@ -24,9 +24,10 @@ import razorpay
 
 def home(request):
     shoes = Product.objects.all()
+    shoe2 = Product.objects.all().order_by('-date')
     cats = Category.objects.all()[:7]
     sld = slider.objects.filter(active=True)
-    context = {'shoes':shoes, 'cats':cats, 'sld':sld}
+    context = {'shoes':shoes, 'cats':cats, 'sld':sld, 'shoe2':shoe2}
     return render(request, 'index.html', context)
 
 def allprod_by_category(request, postslug):

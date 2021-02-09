@@ -2,24 +2,16 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    list-style-type: none;
 }
 
-a{text-decoration: none !important; color: #000;}
-
-h1,h2,h3,h4,h5,h6,p,a,span {
+h1,h2,h3,h4,h5,h6,p,span {
     font-family: 'Montserrat', sans-serif;
 }
 
 dl, ol, ul {
     margin-top: 0;
     margin-bottom: 0 !important;
-    list-style-type: none ;
 }
-ul li{
-    list-style-type: none !important;
-}
-
 .text-white {
     color: #fff!important;
     text-align: center;
@@ -1280,4 +1272,5 @@ text-align: center;
   }
   
   .slider.round:before {
-    border-radius: 50%;}
+    border-radius: 50%;
+
