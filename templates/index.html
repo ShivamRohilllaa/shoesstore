@@ -13,7 +13,7 @@
                     <div class="carousel-item active">
                     {% else %}
                     <div class="carousel-item">
-                        <img class="d-block w-100" style="height:600px;" src="{{i.image.url}}" alt="{{i.image_alt_name}}">
+                        <img class="d-block w-100" src="{{i.image.url}}" alt="{{i.image_alt_name}}">
                         <div class="carousel-caption d-none d-md-block">
                             <p class="modern">{{i.head1}}</p>
                             <h2>{{i.head2}}</h2>
@@ -108,10 +108,10 @@
                                             <span class="product-name">{{i.title}}</span>
                                         </span>
                                         <span class="Username or Customer">
-                                                    <li><i class="fas fa-rupee-sign"></i></li>
-                                                    <span class="line-overtr">Rs. {{i.old_price}}</span> <br> <span
-                                                        class="Price-main">Price</span>
-                                                </span>
+                                            <li><i class="fas fa-rupee-sign"></i></li>
+                                            <span class="line-overtr">Rs. {{i.old_price}}</span> <br> 
+                                            <span class="Price-main">Price</span>
+                                        </span>
                                                 <span class="fa-rupeee">
                                                     <li><i class="fas fa-rupee-sign"></i></li>
                                                     Rs. {{i.price}}<br> <span class="Price-main">Price</span>
