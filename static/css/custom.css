@@ -1281,3 +1281,32 @@ text-align: center;
   
   .slider.round:before {
     border-radius: 50%;}
+    .footer-section {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+    }
+    .cart-back {
+        height: 500px;
+        border-bottom: 2px #000 solid;
+        overflow-y: scroll;
+    }
+    /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #000; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000; 
+  }
