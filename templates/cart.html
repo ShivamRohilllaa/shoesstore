@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Cart{% endblock title %}
+{% block style %}
+    .footer-section {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+    }
+{% endblock style %}
 {% block body %}
+
 {% load static %}
     <section class="cart-section-w">
         <div class="container">

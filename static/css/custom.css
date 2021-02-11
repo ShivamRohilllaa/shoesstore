@@ -1281,11 +1281,7 @@ text-align: center;
   
   .slider.round:before {
     border-radius: 50%;}
-    .footer-section {
-        position: absolute;
-        width: 100%;
-        bottom: 0px;
-    }
+
     .cart-back {
         height: 500px;
         border-bottom: 2px #000 solid;
